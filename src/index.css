@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FundsFlow Design System - All colors, gradients, fonts, etc defined here */
+
+@layer base {
+  :root {
+    /* Core Brand Colors - HSL Format */
+    --primary: 214 100% 52%; /* #0F62FE */
+    --primary-hover: 214 100% 46%; /* #0B53D6 */
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 178 69% 35%; /* #0EA5A4 */
+    --secondary-foreground: 0 0% 100%;
+    
+    --accent: 38 92% 50%; /* #F59E0B */
+    --accent-foreground: 0 0% 100%;
+    
+    /* Status Colors */
+    --success: 158 64% 52%; /* #10B981 */
+    --success-foreground: 0 0% 100%;
+    
+    --warning: 22 93% 53%; /* #F97316 */
+    --warning-foreground: 0 0% 100%;
+    
+    --danger: 0 84% 60%; /* #EF4444 */
+    --danger-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    /* Surface & Text */
+    --background: 210 20% 98%; /* #F8FAFC */
+    --foreground: 222 84% 5%; /* #0F172A */
+    
+    --surface: 0 0% 100%; /* #FFFFFF */
+    --surface-foreground: 222 84% 5%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 222 84% 5%;
+    
+    --muted: 215 12% 42%; /* #6B7280 */
+    --muted-foreground: 215 12% 42%;
+    
+    /* Interactive Elements */
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 84% 5%;
+    
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 214 100% 52%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-surface: linear-gradient(180deg, hsl(var(--surface)), hsl(210 20% 96%));
+    
+    /* Shadows */
+    --shadow-card: 0 2px 8px rgba(2, 6, 23, 0.06);
+    --shadow-elevated: 0 8px 32px rgba(2, 6, 23, 0.12);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / 0.2);
+    
+    /* Spacing */
+    --radius: 12px;
+    --radius-button: 8px;
+    --radius-input: 6px;
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-quick: all 0.15s ease-out;
+    
+    /* Sidebar */
+    --sidebar-background: hsl(var(--surface));
+    --sidebar-foreground: hsl(var(--foreground));
+    --sidebar-primary: hsl(var(--primary));
+    --sidebar-primary-foreground: hsl(var(--primary-foreground));
+    --sidebar-accent: hsl(210 20% 96%);
+    --sidebar-accent-foreground: hsl(var(--foreground));
+    --sidebar-border: hsl(var(--border));
+    --sidebar-ring: hsl(var(--ring));
+  }
+
+  .dark {
+    --background: 222 84% 5%;
+    --foreground: 210 40% 98%;
+    
+    --surface: 217 33% 18%;
+    --surface-foreground: 210 40% 98%;
+    
+    --card: 217 33% 18%;
+    --card-foreground: 210 40% 98%;
+    
+    --popover: 217 33% 18%;
+    --popover-foreground: 210 40% 98%;
+    
+    --primary: 214 100% 70%;
+    --primary-foreground: 222 84% 5%;
+    
+    --secondary: 178 69% 45%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+    
+    --accent: 217 33% 18%;
+    --accent-foreground: 210 40% 98%;
+    
+    --border: 217 33% 18%;
+    --input: 217 33% 18%;
+    --ring: 214 100% 70%;
+    
+    --sidebar-background: 240 6% 10%;
+    --sidebar-foreground: 240 5% 96%;
+    --sidebar-primary: 224 76% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 4% 16%;
+    --sidebar-accent-foreground: 240 5% 96%;
+    --sidebar-border: 240 4% 16%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  
+  /* Typography */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+  
+  /* Custom component styles */
+  .funds-flow-card {
+    @apply bg-surface text-surface-foreground rounded-xl shadow-[var(--shadow-card)] border border-border/5;
+  }
+  
+  .hierarchy-node {
+    @apply bg-gradient-to-br from-primary/5 to-secondary/5 border-2 border-primary/20 
+           rounded-xl p-4 transition-all duration-300 hover:shadow-[var(--shadow-elevated)] 
+           hover:border-primary/40 cursor-pointer;
+  }
+  
+  .hierarchy-node.expanded {
+    @apply bg-gradient-to-br from-primary/10 to-secondary/10 border-primary/60;
+  }
+  
+  .transaction-row {
+    @apply bg-surface hover:bg-primary/5 transition-colors duration-150 border-b border-border/30;
+  }
+  
+  .status-badge {
+    @apply inline-flex items-center px-2 py-1 rounded-md text-xs font-medium;
+  }
+  
+  .status-badge.confirmed {
+    @apply bg-success/10 text-success border border-success/20;
+  }
+  
+  .status-badge.pending {
+    @apply bg-warning/10 text-warning border border-warning/20;
+  }
+  
+  .status-badge.disputed {
+    @apply bg-danger/10 text-danger border border-danger/20;
+  }
+}
